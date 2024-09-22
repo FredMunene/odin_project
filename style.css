@@ -1,0 +1,91 @@
+.hero, footer{
+    background-color: #1f2937;
+}
+
+li {
+    display: inline;
+    gap: 30px
+}
+
+
+
+.title{
+    font-size: 48px;
+    color: f9faf8;
+    font-weight: 900;
+}
+.container-flex{
+    display: flex;
+}
+.image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin : 10px;
+
+}
+.image img {
+    border-radius: 10px;
+    border:2px solid #3882f6;
+}
+.image p {
+    text-align: center;
+}
+
+.headerLogo{
+    font-size: 24px;
+    color: #f9faf8;
+}
+.description {
+    font-size: 18px;
+    color: #f9faf8;
+
+}
+.sign{
+    color: #3882f6;
+}
+
+.button{
+    background-color: #3882f6;
+    color: #f9faf8;
+}
+h2{
+    font-size: 36px;
+    color:#1f2937;
+    font-weight: 900;
+    text-align: center;
+}
+.partFour{
+    background-color: #3882f6;
+    color: white;
+    margin: 20px;
+    /* display: inline; */
+}
+
+.quote {
+    background-color: #e5e7eb;
+}
+.quote p {
+    font-size: 36px;
+    font-style: light italic;
+    color: #1f2937;
+}
+footer{
+    margin: auto;
+    text-align: center;
+}
+
+.secondPart{
+    display: flex;
+}
+.secondPart div{
+    flex : 1;
+    flex-direction: column;
+}
+.secondPart img {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: auto;
+}
