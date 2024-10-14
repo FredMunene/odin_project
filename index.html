@@ -4,87 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-    
 </head>
 <body>
-    <script type="module">
-        import {playGame} from '/main.js'
-        playGame()
+
+    <!-- <script type="module">
+        // Import the playGame function from main.js
+        import { playGame } from './main.js';
+        if (typeof playGame !== 'function') {
+    console.error('playGame function is not defined.');
+}
+
+    </script> -->
+
+    <div class="buttons">
+        <button type="button">Paper</button>
+        <button type="button">Scissors</button>
+        <button type="button">Rock</button>
+    </div>
+
+    <div>
+        <p id="humanScore">Your Score</p>
+        <p id="computerScore">Computer Score</p>
+    </div>
+
+    <script>
+        // let body = document.querySelector('body')
+        // Keep track of scores
+let humanScore = 0;
+let computerScore = 0;
+
+// Function to get a random computer choice
+function getComputerChoice() {
+    const choices = ['Rock', 'Paper', 'Scissors'];
+    const randomIndex = Math.floor(Math.random() * 3);
+    return choices[randomIndex];
+}
+
+// Function to play a single round
+function playRound(humanChoice, computerChoice) {
+    // Normalize to lowercase to compare
+    const human = humanChoice.toLowerCase();
+    const computer = computerChoice.toLowerCase();
+
+    let res1 = document.getElementById('humanScore')
+   
+    let res2 = document.getElementById('computerScore')
+
+
+    // Determine the winner
+    if (
+        (human === 'rock' && computer === 'scissors') ||
+        (human === 'scissors' && computer === 'paper') ||
+        (human === 'paper' && computer === 'rock')
+    ) {
+        humanScore++;
+        res1.textContent = `Your Score ${humanScore}`
+        res2.textContent = `Computer Score ${computerScore}`
+        return `You win! ${humanChoice} beats ${computerChoice}`;
+    } else if (human === computer) {
+        res2.textContent = `Computer Score ${computerScore}`
+        res1.textContent = `Your Score ${humanScore}`
+        return `It's a draw! You both chose ${humanChoice}`;
+    } else {
+        computerScore++;
+        res2.textContent = `Computer Score ${computerScore}`
+        res1.textContent = `Your Score ${humanScore}`
+        return `You lose! ${computerChoice} beats ${humanChoice}`;
+    }
+}
+
+// Function to play the game
+ function playGame(humanChoice) {
+    let res1 = document.getElementById('humanScore')  
+   let res2 = document.getElementById('computerScore')
+
+    const computerChoice = getComputerChoice(); // Get computer's choice
+    const result = playRound(humanChoice, computerChoice); // Play a round
+    console.log(result); // Output the result
+
+    // Display current scores
+    console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+
+    // Check if either player has reached a winning score
+    if (humanScore >= 5) {
+        res2.textContent = `Computer Score ${computerScore}`
+        res1.textContent = `Your Score ${humanScore}`
+        alert('Congratulations! You won the game!')
+        resetGame();
+    } else if (computerScore >= 5) {
+        res2.textContent = `Computer Score ${computerScore}`
+        res1.textContent = `Your Score ${humanScore}`
+        alert('Sorry! The computer won the game!')
+        resetGame();
+    }
+}
+
+// Function to reset the game after someone wins
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+
+    let res1 = document.getElementById('humanScore')  
+   let res2 = document.getElementById('computerScore')
+   res2.textContent = `Computer Score ${computerScore}`
+   res1.textContent = `Your Score ${humanScore}`
+    console.log('Game has been reset.');
+}
+        // Select all button elements
+        let buttons = document.querySelectorAll('button');
+
+        // Add event listeners to buttons
+        buttons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                // Call playGame with the text content of the clicked button
+                playGame(e.target.textContent);
+            });
+        });
     </script>
-    <div class="hero">
-        <div class="navbar" >
-            <nav>
-                <ul>
-                    <li class="headerLogo">Header Logo</li>
-                    <li>header link one</li>
-                    <li>header link two</li>
-                    <li>header link three</li>
-                </ul>
-            </nav>
-        </div>
-        <div class="secondPart">
-            <div>
-                <p class="title">
-                    This website is awesome
-                </p>
-                <p class="description">
-                    This website has some subtext that goes here under the main title.
-                     It's a smaller font and the color is lower contrast.
-                </p>
-                <button class="sign"></button>
-            </div>
-            <div>
-                <img src="untitled.jpeg" alt="this is a placeholder for an image">
-            </div>
-        </div>
-    </div>
 
-    <div class="partTwo">
-        <h2>Some Random information</h2>
-        <div class="container-flex">
-            <div class="image">
-                <img src="uni.jpg">
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="image">
-                <img src="uni.jpg">
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="image">
-                <img src="uni.jpg">
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-            <div class="image">
-                <img src="uni.jpg">
-                <p>this is some subtext under an illustration or image</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="quote"> 
-        <p>
-            <em>This is an inspiring quote, or a testimonial from a customer. Maybe it' 
-                just filing up space, or maybe people will actually read it. Who knows? 
-                All I know is that it looks nice.</em>
-        </p>
-        <p>
-            <strong>-Thor, God of Thunder</strong>
-        </p>
-    </div>
-
-    <div class="partFour">
-        <div>
-            <p>
-                <strong>Call to action! It's time!</strong>
-                Sign up for our product by clicking the button right over there!
-            </p>
-            <button class="button">Sign Up</button>
-        </div>
-    </div>
-    <footer>
-        Copyright ©  The Odin Project 2024
-    </footer>
 </body>
 </html>
-
